@@ -1,0 +1,93 @@
+
+{% load static %}
+<!DOCTYPE html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, intial-scale=1.0">
+    <title>I STORE</title>
+    <link rel="icon" href="static/images/logo1.jpg">
+    <link rel="stylesheet" href="static/css/styles.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.2.1/css/fontawesome.min.css">
+    
+</head>
+<body>
+   
+<div class="container">
+    <div class="navbar">
+        <div class="logo">
+        
+            <img src="{% static 'images\apple brand.jpg' %}" width="128px">
+        </div>
+        <nav>
+            <ul  id="MenuItems">
+                <li><a href="{% url 'index' %}"><img src="{% static 'images/house-xxl.jpg'%}" width="30px" height="30px"></a></li>
+                <li><a href="{% url 'product' %}"><img src="{% static 'images/product.jpg'%}" width="30px" height="30px"></a></li>
+                <li><a href="{% url 'about' %}"><img src="{% static 'images/about.jpg'%}" width="30px" height="30px"></a></li>
+                <li><a href="{% url 'contact' %}"><img src="{% static 'images/contact.jpg'%}" width="30px" height="30px"></a></li>
+                <li><a href="{% url 'account' %}"><img src="{% static 'images/account.jpg'%}" width="30px" height="30px"></a></li>
+            </ul>
+        </nav>
+        <a href="{% url 'cart'%}"> <img src="{% static 'images/cart.jpg'%}" width="30px"height="30px"></a>
+        <img src="{% static 'images/menu.jpg'%}" class="menu-icon" onclick="menutoggle()">
+     </div>
+</div>
+
+    {% block content%}
+       
+    {% endblock %}
+
+ 
+
+<!--footer-->
+    
+
+
+<div class="footer">
+        <div class="container">
+            <div class="row">
+                <div class="footer-col-1">
+                    <p>DOWNLOAD OUR APP</p>
+                    <div class="app-logo">
+                        <img src="{% static 'images/play-store.jpg'%}">
+                        <img src="{% static 'images/app-store.jpg'%}">
+                    </div>
+                </div>
+                <div class="footer-col-2">
+                    <img src="{% static 'images/apple brand.jpg'%}">
+                </div>
+                <div class="footer-col-3">
+                    <h3>USEFUL LINKS</h3>
+                    <ul>
+                        <li><a href="{% url 'contact'%}" id="a">CONTACT</a></li>
+                        <li><a href="{% url 'about'%}" id="a">ABOUT</a></li>
+                       </ul>
+                </div>
+                <div class="footer-col-3">
+                    <h3>FOLLOW US</h3>
+                    <ul>
+                        <img src="{% static 'images/facebook.jpg'%}" width="20px" height="20px">
+                        <img src="{% static 'images/instagram-6.jpg'%}"width="20px" height="20px">
+                        <img src="{% static 'images/linkedin.jpg'%}"width="20px" height="20px">
+                    </ul>
+                </div>
+                </div>
+                
+              
+    </div>
+    <!--toogle menu-->
+    <script>
+        var MenuItems = document.getElementById("MenuItems")
+        MenuItems.style.maxHeight="0px";
+        function menutoggle(){
+            if(MenuItems.style.maxHeight == "0px"){
+                MenuItems.style.maxHeight ="200px";
+            }
+            else{
+                MenuItems.style.maxHeight ="0px";
+            }
+            }
+        
+    </script>
+    
+    </body>
+    </html>

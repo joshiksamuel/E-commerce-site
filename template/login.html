@@ -1,0 +1,48 @@
+{% extends "base.html" %}
+{% block content %}
+{% load static %}
+
+    
+
+ 
+<!---account page-->
+<div class="account-page">
+    <div class="container">
+        <div class="row">
+            <div class="col-2">
+                <img src="{% static 'images/images1.jpg'%}" width="100%">
+            </div>
+            <div class="col-2">
+                <div class="form-container">
+                    <h2 style="text-align: center;">LOGIN </h2>
+                
+                    
+                
+                   <form method="POST" action="login">
+                        
+                        {% csrf_token %}
+                        <input type="email" placeholder="email" name="Email">
+                        <input type="password" placeholder="Password" name="Password">
+                        <button type="submit" class="btn">login</button>
+                        <h2><a href="{%url 'changepassword'%}">forget password</a></h2><br>
+                        <h2><a href="{%url 'signup'%}">signup</h2></a><br>
+                        {% if messages %}
+                        {% for i in messages %}
+                        <strong>{{i}}</strong>
+                        {% endfor %}
+                        {% endif %} 
+                    </form>
+                 
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+
+
+
+{% endblock %}

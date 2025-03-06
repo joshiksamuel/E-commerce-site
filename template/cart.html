@@ -1,0 +1,65 @@
+{% extends "base.html" %}
+{% block content %}
+{% load static %}
+
+
+<!--cart items details-->
+<div class="small-container cart-page">
+   {% if cart_items%}
+    <table>
+        <tr>
+            <th>ITEM</th>
+            <th>PRODUCTS</th>
+            <th>QUANTITY</th>
+             <th>PRICE</th>
+        </tr>
+        <tbody>
+           
+                <tr>
+                    {% for item in cart_items %}
+                    <tr>
+                        <td><img src="{{ item.product.imageURL}}"></td>
+                        <td>{{ item.product.name }}</td>
+                        <td>{{ item.product.quantity }}</td>
+                        <td>${{ item.product.price }}</td>
+                        <tbody>
+                            <tr>
+                        <td>
+                            <form action="{% url 'remove_from_cart' item.id %}" method="post">
+                                {% csrf_token %}
+                                <button class="btn" type="submit" value="Remove" style="padding: 5px;">Remove</button>
+                            </form>
+                        </td>
+                    </tr> 
+                        {% endfor %}
+                    </tbody>
+                </tr>
+           </tr>
+            
+           
+        </tbody>
+      
+            <tr>
+                <td ><strong>TOTAL</strong></td>
+               
+                <td>${{ total_price }}</td>
+              
+            </tr>   
+        </table>
+           {% else%}
+          <H1>Your cart is empty.</H1>
+           {% endif %}
+         
+     <a href="{%url 'buynow'%}" class="btn-cart" style="padding: 20px 40px; margin-left: 500px;">BUY NOW</a>
+    </div>
+    </div>
+</div>
+
+
+
+<!--footer-->
+
+
+
+
+{% endblock %}

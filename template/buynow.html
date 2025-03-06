@@ -1,0 +1,141 @@
+{% extends "base.html" %}
+{% block content %}
+{% load static %}
+
+
+<body>
+   
+        <div class="small-container cart-page">
+            {% if cart_items%}
+             <table>
+                 <h1>ORDER IETMS</h1>
+                 <tr>
+                     <th>ITEM</th>
+                     <th>PRODUCTS</th>
+                     <th>QUANTITY</th>
+                      <th>PRICE</th>
+                 </tr>
+                 <tbody>
+                    
+                         <tr>
+                             {% for item in cart_items %}
+                             <tr>
+                                <td><img src="{{ item.product.imageURL}}"></td>
+                                <td>{{ item.product.name }}</td>
+                                <td>{{ item.product.quantity }}</td>
+                                <td>${{ item.product.price }}</td>
+                                 <tbody>
+                            
+                                 {% endfor %}
+                             </tbody>
+                         </tr>
+                    </tr>
+                     
+                    
+                 </tbody>
+               
+                     <tr>
+                         <td ><strong>TOTAL</strong></td>
+                        
+                         <td>${{ total_price }}</td>
+                       
+                     </tr>   
+                 </table>
+                    {% else%}
+                   <H1>Your cart is empty.</H1>
+                    {% endif %}
+                  
+            
+             </div>
+<div class="container buynow">
+  
+    
+
+    <form action="buynow" method="POST">
+        {% csrf_token %}
+        <div class="row">
+
+            <div class="col">
+
+                <h3 class="title">billing address</h3>
+            
+                <div class="inputBox">
+                    <span>full name :</span>
+                    <input type="text" required="name" placeholder="john deo" name="name">
+                </div>
+                <div class="inputBox">
+                    <span>email :</span>
+                    <input type="email" required="email" placeholder="example@example.com" name="email">
+                </div>
+                <div class="inputBox">
+                    <span>address :</span>
+                    <input type="text" required="address" placeholder="room - street - locality" name="address">
+                </div>
+                <div class="inputBox">
+                    <span>city :</span>
+                    <input type="text" required="city" placeholder="mumbai" name="city">
+                </div>
+
+                <div class="flex">
+                    <div class="inputBox">
+                        <span>state :</span>
+                        <input type="text" required="state" placeholder="india" name="state">
+                    </div>
+                    <div class="inputBox">
+                        <span>zip code :</span>
+                        <input type="text" required="zip" placeholder="123 456" name="zipcode">
+                    </div>
+                </div>
+
+            </div>
+
+            <div class="col">
+
+                <h3 class="title">payment</h3>
+
+                <div class="inputBox">
+                    <span>cards accepted :</span>
+                    <img src="{% static 'images/card_img.jpg'%}" alt="">
+                </div>
+                <div class="inputBox">
+                    <span>name on card :</span>
+                    <input type="text" placeholder="mr. john deo" name="namecard">
+                </div>
+                <div class="inputBox">
+                    <span>credit card number :</span>
+                    <input type="number" placeholder="1111-2222-3333-4444" name="creditno">
+                </div>
+                <div class="inputBox">
+                    <span>exp month :</span>
+                    <input type="text" placeholder="january" name="expmonth">
+                </div>
+
+                <div class="flex">
+                    <div class="inputBox">
+                        <span>exp year :</span>
+                        <input type="number" placeholder="2022" name="expyear">
+                    </div>
+                    <div class="inputBox">
+                        <span>CVV :</span>
+                        <input type="text" placeholder="1234" name=cvv>
+                    </div>
+                </div>
+
+            </div>
+    
+        </div>
+      
+       <input type="submit" data-bs-toggle="modal fade" data-bs-target="#staticBackdrop" class="btn-buy" name="check out the products" value="CHECK OUT" style="font-size: 25px;padding-bottom: 40px;">
+</div>
+   
+    </form>
+   
+
+
+
+
+     
+
+
+
+{% endblock %}

@@ -1,0 +1,41 @@
+{% extends "base.html" %}
+{% block content %}
+{% load static %}
+
+
+<!---account page-->
+<div class="account-page">
+    <div class="container">
+        <div class="row">
+            <div class="col-2">
+                <img src="{% static 'images/images1.jpg'%}" width="100%">
+            </div>
+            <div class="col-2">
+                <div class="form-container">
+                 
+                    <h3>SIGN UP</h3>
+                    <form method="POST" action="signup">
+                        {% csrf_token %}
+                        <input type="text" placeholder="Username" name="Username" autofocus required>
+                        <input type="email" placeholder="email" name="Email" autofocus required>
+                        <input type="password" placeholder="Password" name="Password" autofocus required>
+                        <input type="submit" class="btn" value="Register"><br>
+                        <strong><a href="{%url 'login'%}">login</a></strong>
+                        {% if messages %}
+                        {% for i in messages %}
+                        <strong>{{i}}</strong>
+                        {% endfor %}
+                        {% endif %} 
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+
+
+{% endblock %}

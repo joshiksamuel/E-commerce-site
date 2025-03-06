@@ -1,0 +1,51 @@
+{% extends "base.html" %}
+{% block content %}
+{% load static %}
+
+   
+  
+      
+<!---account page-->
+<div class="account-page">
+    <div class="container">
+        <div class="row">
+            <div class="col-2">
+                <img src="{% static 'images/images1.jpg'%}" width="95%">
+            </div>
+            <div class="col-2">
+                <div class="contact">
+                    <div class="form-btn">
+                         <h1> FOR CONTACT</h1>
+                        <hr id="indicator">
+                    </div>
+                    <form id="CONTACT" method="POST" action="contact">
+                        {% csrf_token %}
+                        <input type="text" placeholder="name" name="name" autofocus required>
+                        <input type="number" placeholder="phoneno" name="phoneno" required,maxlength="10">
+                        <input type="email" placeholder="email" name="email"autofocus required>
+                        <input type="text" placeholder="address" name="address"autofocus required>
+                        <textarea name="message" id="c" cols="auto">message</textarea>
+                        <input  id="d"type="submit" >
+                        {% if messages %}
+                        {% for i in messages %}
+                        <h3>{{i}}</h3>
+                        {% endfor %}
+                        {% endif %} 
+                    </form>
+                 
+             
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+
+
+
+
+
+{% endblock %}

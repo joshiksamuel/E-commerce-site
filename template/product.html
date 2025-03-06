@@ -1,0 +1,52 @@
+
+{% extends "base.html" %}
+{% block content %}
+{% load static %}
+
+
+
+   
+<div class="small-container">
+     <div class="row row-2">
+        <h2>ALLPRODUCTS</h2>
+     
+     </div>
+     
+    <div class="row">
+        <ul class="product-list">
+            {% for product in products %}
+            <li class="product-item">
+           <a href="{% url 'productdetails' product.id%}"> <img src="{{ product.imageURL }}" width="200" height="200"></a>
+            <h4>{{ product.name }}</h4>
+            <p>${{ product.price }}</p>
+            </li>
+            
+            {% endfor %}
+        </ul>
+        </div>
+    </div>
+</div>
+
+
+
+
+<style>
+      .product-item {
+            flex: 1; /* Grow to fill available space evenly */
+            max-width: 30%; /* Limit item width to avoid overcrowding */
+            margin: 10px; /* Add spacing between items */
+            /* Add a border for visual separation */
+            padding: 10px;
+            text-align: center;
+        }
+        .product-list {
+            display: flex;
+            flex-wrap: wrap; /* Allow items to wrap to the next row if necessary */
+            justify-content: space-between; /* Space items evenly along the main axis */
+            list-style: none; /* Remove list styles */
+            padding: 0;
+        }
+</style>
+
+
+{% endblock %}

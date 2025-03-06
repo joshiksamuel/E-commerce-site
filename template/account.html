@@ -1,0 +1,65 @@
+{% extends "base.html" %}
+{% block content %}
+{% load static %}
+
+
+<!---account page-->
+<div class="account-page">
+    <div class="container">
+        <div class="row">
+            <div class="col-2">
+                <img src="{% static 'images/images1.jpg'%}" width="100%">
+            </div>
+            <div class="col-2">
+                <div class="form-container">
+                    <a href="{%url 'signup'%}" class="btn">signup</a><br>
+                    <a href="{%url 'login'%}" class="btn">login</a><br>
+                    <a href="{%url 'logout'%}" class="btn">logout</a>
+                    
+                 
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+
+            
+
+<!--toogle menu-->
+<script>
+    var MenuItems = document.getElementById("MenuItems")
+    MenuItems.style.maxHeight="0px";
+    function menutoggle(){
+        if(MenuItems.style.maxHeight == "0px"){
+            MenuItems.style.maxHeight ="200px";
+        }
+        else{
+            MenuItems.style.maxHeight ="0px";
+        }
+        }
+    
+</script>
+<script>
+    var LoginForm=document.getElementById("login");
+    var RegForm=document.getElementById("Register");
+    var Indicator=document.getElementById("indicator");
+    
+      function register(){
+        RegForm.style.transform="translateX(0px)";
+        LoginForm.style.transform="translateX(0px)";
+        Indicator.style.transform="translateX(100px)";
+      }
+      function login(){
+        RegForm.style.transform="translateX(300px)";
+        LoginForm.style.transform="translateX(300px)";
+        Indicator.style.transform="translateX(0px)";
+      }
+</script>
+
+</body>
+</html>
+{% endblock %}
